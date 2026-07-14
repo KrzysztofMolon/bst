@@ -15,7 +15,7 @@ jobs:
         - snaipe/ci-meson:gcc-alpine-3.10
         - snaipe/ci-meson:gcc-fedora-31
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - name: make
@@ -26,4 +26,5 @@ jobs:
           command -v dnf && dnf install -y glibc-static scdoc
           CPPFLAGS='-Wconversion -pedantic-errors' meson build -Dsuid-fallback=true
           ninja -C build
+          ninja -C build test
 
